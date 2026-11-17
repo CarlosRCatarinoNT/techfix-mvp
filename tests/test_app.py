@@ -106,3 +106,11 @@ def test_ordem_para_cliente_inexistente(client):
 def test_listagens_vazias(client):
     assert client.get("/clientes").json == []
     assert client.get("/os").json == []
+
+
+def test_pagina_inicial_exibe_interface_acessivel(client):
+    resposta = client.get("/")
+    assert resposta.status_code == 200
+    assert b"TechFix" in resposta.data
+    assert b"contrast-toggle" in resposta.data
+    assert b"aria-live" in resposta.data
