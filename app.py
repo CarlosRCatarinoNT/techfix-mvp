@@ -1,6 +1,6 @@
 import sqlite3
 
-from flask import Flask, current_app, g, jsonify, request
+from flask import Flask, current_app, g, jsonify, render_template, request
 
 
 def validar_cliente(dados):
@@ -72,6 +72,10 @@ def criar_app(config=None):
         app.config.update(config)
 
     app.teardown_appcontext(fechar_db)
+
+    @app.get("/")
+    def inicio():
+        return render_template("index.html")
 
     @app.get("/health")
     def health():
