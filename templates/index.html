@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sistema de gestão de assistência técnica TechFix">
+  <title>TechFix | Gestão de Assistência Técnica</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">T</span><div><strong>TechFix</strong><small>Gestão de assistência técnica</small></div></div>
+    <button id="contrast-toggle" class="contrast-button" type="button" aria-pressed="false">Alto contraste: desligado</button>
+  </header>
+  <main id="conteudo" class="container">
+    <section class="welcome">
+      <div><p class="eyebrow">PAINEL DE CONTROLE</p><h1>Bem-vindo ao TechFix</h1><p>Cadastre clientes, registre equipamentos para atendimento e acompanhe as ordens de serviço.</p></div>
+      <div class="welcome-icon" aria-hidden="true">⚙</div>
+    </section>
+    <div id="feedback" class="feedback" role="status" aria-live="polite">Sistema pronto para uso.</div>
+    <section class="stats" aria-label="Resumo do sistema">
+      <article class="stat"><span>Clientes cadastrados</span><strong id="total-clientes">0</strong></article>
+      <article class="stat"><span>Ordens de serviço</span><strong id="total-os">0</strong></article>
+      <article class="stat"><span>Ordens abertas</span><strong id="total-abertas">0</strong></article>
+    </section>
+    <div class="content-grid">
+      <section class="panel" aria-labelledby="cliente-title">
+        <div class="panel-heading"><div><p class="eyebrow">CADASTRO</p><h2 id="cliente-title">Novo cliente</h2></div><span class="panel-icon" aria-hidden="true">＋</span></div>
+        <form id="cliente-form">
+          <label for="nome">Nome completo</label><input id="nome" name="nome" autocomplete="name" required maxlength="120" placeholder="Ex.: Ana Souza">
+          <label for="email">E-mail</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="160" placeholder="ana@email.com">
+          <button class="primary-button" type="submit">Cadastrar cliente</button>
+        </form>
+      </section>
+      <section class="panel" aria-labelledby="os-title">
+        <div class="panel-heading"><div><p class="eyebrow">ATENDIMENTO</p><h2 id="os-title">Abrir ordem de serviço</h2></div><span class="panel-icon" aria-hidden="true">▤</span></div>
+        <form id="os-form">
+          <label for="cliente_id">Cliente</label><select id="cliente_id" name="cliente_id" required><option value="">Selecione um cliente</option></select>
+          <label for="descricao">Descrição do serviço</label><textarea id="descricao" name="descricao" rows="3" maxlength="500" required placeholder="Ex.: Diagnóstico de notebook que não liga"></textarea>
+          <button class="primary-button" type="submit">Registrar ordem</button>
+        </form>
+      </section>
+    </div>
+    <section class="panel table-panel" aria-labelledby="clientes-lista-title">
+      <div class="panel-heading"><div><p class="eyebrow">BASE DE DADOS</p><h2 id="clientes-lista-title">Clientes cadastrados</h2></div></div>
+      <div class="table-wrap"><table><caption class="sr-only">Lista de clientes cadastrados no TechFix</caption><thead><tr><th scope="col">Código</th><th scope="col">Nome</th><th scope="col">E-mail</th></tr></thead><tbody id="clientes-lista"><tr><td colspan="3">Nenhum cliente cadastrado.</td></tr></tbody></table></div>
+    </section>
+    <section class="panel table-panel" aria-labelledby="os-lista-title">
+      <div class="panel-heading"><div><p class="eyebrow">ACOMPANHAMENTO</p><h2 id="os-lista-title">Ordens de serviço</h2></div></div>
+      <div class="table-wrap"><table><caption class="sr-only">Ordens de serviço registradas no TechFix</caption><thead><tr><th scope="col">OS</th><th scope="col">Cliente</th><th scope="col">Descrição</th><th scope="col">Status</th></tr></thead><tbody id="os-lista"><tr><td colspan="4">Nenhuma ordem registrada.</td></tr></tbody></table></div>
+    </section>
+    <footer>TechFix · MVP de gestão de assistência técnica</footer>
+  </main>
+</body>
+</html>
