@@ -144,4 +144,5 @@ def criar_app(config=None):
         ).fetchall()
         return jsonify([dict(ordem) for ordem in ordens]), 200
 
+    inicializar_banco(app)
     return app
